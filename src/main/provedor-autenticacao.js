@@ -2,9 +2,9 @@ import React from 'react';
 
 import AuthService from '../app/service/auth-service';
 
-export const Context = React.createContext();
-export const Consumer = Context.Consumer;
-const Provider = Context.provider;
+export const AuthContext = React.createContext();
+export const AuthConsumer = AuthContext.Consumer;
+const AuthProvider = AuthContext.Provider;
 
 class ProvedorAutenticacao extends React.Component {
 
@@ -24,7 +24,6 @@ class ProvedorAutenticacao extends React.Component {
     }
 
     render() {
-        
         const context = {
             usuarioAutenticado: this.state.usuarioAutenticado,
             isAutenticado: this.state.isAutenticado,
@@ -33,9 +32,9 @@ class ProvedorAutenticacao extends React.Component {
         }
 
         return (
-            <Provider value={context}>
-                {this.props.children}
-            </Provider>
+            <AuthProvider value={context}>
+                 {this.props.children}
+            </AuthProvider>
         );
     }
 }

@@ -4,7 +4,7 @@ import Card from '../components/card';
 import FormGroup from '../components/form-group';
 import UsuarioService from '../app/service/usuario-service';
 import { mensagemDeErro } from '../components/toastr';
-import { Context } from '../main/provedor-autenticacao';
+import { AuthContext } from '../main/provedor-autenticacao';
 
 class Login extends React.Component {
 
@@ -22,7 +22,8 @@ class Login extends React.Component {
         this.usuarioService.autenticar(
             this.state.email, this.state.senha
         ).then(response => {
-            localStorage.setItem('USUARIO_LOGADO', JSON.stringify(response.data));
+            const usuario = JSON.stringify(response.data)
+            AuthContext.iniciarSessao(usuario);
             this.props.history.push('home');
         }).catch(error => {
             mensagemDeErro(error.response.data)
@@ -85,6 +86,6 @@ class Login extends React.Component {
     }
 }
 
-Login.contextType = Context;
+Login.contextType = AuthContext;
 
 export default Login;
