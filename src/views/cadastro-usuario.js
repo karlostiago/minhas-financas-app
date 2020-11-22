@@ -51,6 +51,7 @@ class CadastroUsuario extends React.Component {
 
     redirecionar() {
         const from = this.props.location.search.substring(6);
+
         switch(from) {
             case _LOGIN:
                 this.props.history.push('/login');
@@ -97,7 +98,11 @@ class CadastroUsuario extends React.Component {
                                     >
                                     <em className="pi pi-save" /> Salvar
                                 </button>
-                                <button type="button" className="btn btn-danger" style={{position: 'relative', left: '5px'}}
+
+                                <button 
+                                    type="button" 
+                                    className="btn btn-danger" 
+                                    style={{position: 'relative', left: '5px'}}
                                     onClick={() => this.onClickCancelar()}> <em className="pi pi-times" /> Cancelar </button>
                             </div>
                         </div>

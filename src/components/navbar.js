@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBarItem from './navbar-item';
+import AuthService from '../app/service/auth-service';
 
 export default function NavBar() {
 
@@ -16,6 +17,7 @@ export default function NavBar() {
                         <NavBarItem href="#/home" label="Home" />
                         <NavBarItem href="#/cadastro-usuario" label="Usuários" />
                         <NavBarItem href="#/consulta-lancamento" label="Lançamentos" />
+                        <NavBarItem href="#/login" label="Logout" onClick={() => AuthService.logout()} />
                     </ul>
                 </div>
             </div>
