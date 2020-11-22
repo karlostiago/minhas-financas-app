@@ -29,13 +29,13 @@ function Rotas(props) {
     return (
         <HashRouter>
             <Switch>
-                {/* <Route path="/" component={Login} /> */}
-                <Route path="/login" component={Login} />
-                <Route path="/cadastro-usuario" component={CadastroUsuario} />
+                <Route path="/" exact component={Login} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/cadastro-usuario" exact component={CadastroUsuario} />
 
-                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/home" component={Home} />
-                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/consulta-lancamento" component={ConsultaLancamento} />
-                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/cadastro-lancamento/:id?" component={CadastroLancamento} />
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/home" component={Home} />
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/consulta-lancamento" component={ConsultaLancamento} />
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/cadastro-lancamento/:id?" component={CadastroLancamento} />
             </Switch>
         </HashRouter>
     );
