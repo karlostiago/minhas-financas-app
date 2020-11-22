@@ -18,4 +18,8 @@ export default class AuthService {
     static usuarioLogado() {
         return JSON.parse(localStorage.getItem(_USUARIO_LOGADO)); 
     }
+
+    static JSONParse(usuario) {
+        return JSON.parse(usuario);
+    }
 }

@@ -8,6 +8,7 @@ import SelectMenu from '../../components/select-menu';
 import LancamentoService from '../../app/service/lancamento-serivce';
 import UsuarioService from '../../app/service/usuario-service';
 import { mensagemDeSucesso, mensagemDeErro } from '../../components/toastr';
+import AuthService from '../../app/service/auth-service';
 
 class CadastroLancamento extends React.Component {
 
@@ -39,7 +40,7 @@ class CadastroLancamento extends React.Component {
     }
 
     onClickSalvar = () => {
-        const usuario  = this.usuarioService.usuarioLogado().id;
+        const usuario  = AuthService.usuarioLogado().id;
         const  { descricao, valor, mes, ano, tipo, id, status } = this.state;
 
         const lancamento = {

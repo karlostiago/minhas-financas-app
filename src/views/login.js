@@ -20,13 +20,14 @@ class Login extends React.Component {
 
     onClickEntrar = () => {
         this.usuarioService.autenticar(
-            this.state.email, this.state.senha
+            this.state.email, 
+            this.state.senha
         ).then(response => {
-            const usuario = JSON.stringify(response.data)
-            AuthContext.iniciarSessao(usuario);
+            const usuario = JSON.stringify(response.data);
+            this.context.iniciarSessao(usuario);
             this.props.history.push('home');
         }).catch(error => {
-            mensagemDeErro(error.response.data)
+            mensagemDeErro(error.response.data);
         });
     }
 

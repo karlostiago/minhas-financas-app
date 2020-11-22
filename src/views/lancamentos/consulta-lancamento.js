@@ -8,6 +8,7 @@ import LancamentoTable from './lancamento-table';
 import LancamentoService from '../../app/service/lancamento-serivce';
 import UsuarioService from '../../app/service/usuario-service';
 import { mensagemDeAlerta, mensagemDeErro, mensagemDeSucesso } from '../../components/toastr';
+import AuthService from '../../app/service/auth-service';
 
 import {Dialog} from 'primereact/dialog';
 import {Button} from 'primereact/button';
@@ -37,7 +38,7 @@ class ConsultaLancamento extends React.Component {
             return false;
         }
 
-        const usuario = this.usuarioService.usuarioLogado().id;
+        const usuario = AuthService.usuarioLogado().id;
         const { ano, mes, tipo, descricao } = this.state;
         const lancamentoFiltro = {
             ano,

@@ -6,12 +6,12 @@ import CadastroUsuario from '../views/cadastro-usuario';
 import Home from '../views/home';
 import ConsultaLancamento from '../views/lancamentos/consulta-lancamento';
 import CadastroLancamento from '../views/lancamentos/cadastro-lancamento';
-import AuthService from '../app/service/auth-service';
+import { AuthConsumer } from '../main/provedor-autenticacao';
 
-function RotaAutenticada( { component: Component, ...props } ) {
+function RotaAutenticada( { component: Component, isUsuarioAutenticado, ...props } ) {
     return (
         <Route {...props} render={(componentProps) => {
-            if(AuthService.isUsuarioAutenticado()) {
+            if(isUsuarioAutenticado) {
                 return (
                     <Component {...componentProps} />
                 );
@@ -25,16 +25,26 @@ function RotaAutenticada( { component: Component, ...props } ) {
     );
 }
 
-export default function Rotas() {
+function Rotas(props) {
     return (
         <HashRouter>
             <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/cadastro-usuario" component={CadastroUsuario} />
-                <RotaAutenticada path="/home" component={Home} />
-                <RotaAutenticada path="/consulta-lancamento" component={ConsultaLancamento} />
-                <RotaAutenticada path="/cadastro-lancamento/:id?" component={CadastroLancamento} />
+
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/home" component={Home} />
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/consulta-lancamento" component={ConsultaLancamento} />
+                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/cadastro-lancamento/:id?" component={CadastroLancamento} />
             </Switch>
         </HashRouter>
     );
 }
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => (
+    <AuthConsumer>
+        { 
+            (context) => (<Rotas isUsuarioAutenticado={context.isAutenticado} />) 
+        }
+    </AuthConsumer>
+);
