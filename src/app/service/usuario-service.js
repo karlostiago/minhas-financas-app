@@ -55,10 +55,6 @@ class UsuarioService extends ApiService {
     saldoPorID(id) {
         return this.get(`/${id}/saldo`);
     }
-
-    usuarioLogado() {
-        return JSON.parse(localStorage.getItem('USUARIO_LOGADO')); 
-    }
 }
 
 export default UsuarioService;

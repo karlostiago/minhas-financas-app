@@ -4,6 +4,7 @@ import Card from '../components/card';
 import FormGroup from '../components/form-group';
 import UsuarioService from '../app/service/usuario-service';
 import { mensagemDeErro } from '../components/toastr';
+import { Context } from '../main/provedor-autenticacao';
 
 class Login extends React.Component {
 
@@ -83,5 +84,7 @@ class Login extends React.Component {
         );
     }
 }
+
+Login.contextType = Context;
 
 export default Login;

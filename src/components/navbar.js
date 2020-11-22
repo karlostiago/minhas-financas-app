@@ -14,10 +14,10 @@ export default function NavBar() {
 
                 <div id="navbar-collapse" className="collapse navbar-collapse">
                     <ul className="navbar-nav">
-                        <NavBarItem href="#/home" label="Home" />
-                        <NavBarItem href="#/cadastro-usuario" label="Usuários" />
-                        <NavBarItem href="#/consulta-lancamento" label="Lançamentos" />
-                        <NavBarItem href="#/login" label="Logout" onClick={() => AuthService.logout()} />
+                        <NavBarItem render={AuthService.isUsuarioAutenticado()} href="#/home" label="Home" />
+                        <NavBarItem render={AuthService.isUsuarioAutenticado()} href="#/cadastro-usuario" label="Usuários" />
+                        <NavBarItem render={AuthService.isUsuarioAutenticado()} href="#/consulta-lancamento" label="Lançamentos" />
+                        <NavBarItem render={AuthService.isUsuarioAutenticado()} href="#/login" label="Logout" onClick={() => AuthService.logout()} />
                     </ul>
                 </div>
             </div>

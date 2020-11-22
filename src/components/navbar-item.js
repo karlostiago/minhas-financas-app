@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function NavBarItem(props) {
+export default function NavBarItem( {render, ...props}) {
+
+    if(!render) return false;
 
     return (
         <li className="nav-item">
