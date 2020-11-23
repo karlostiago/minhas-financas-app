@@ -86,7 +86,7 @@ class CadastroUsuario extends React.Component {
                                 <input type="password" id="senha" name="senha" className="form-control"
                                     onChange={e => this.setState({senha: e.target.value})} />
                             </FormGroup>
-                            <FormGroup label="confirmaSenha" htmlFor="confirmaSenha">
+                            <FormGroup label="Confirma Senha *" htmlFor="confirmaSenha">
                                 <input type="password" id="confirmaSenha" name="confirmaSenha" className="form-control"
                                     onChange={e => this.setState({confirmaSenha: e.target.value})} />
                             </FormGroup>

@@ -9,6 +9,7 @@ import LancamentoService from '../../app/service/lancamento-serivce';
 import UsuarioService from '../../app/service/usuario-service';
 import { mensagemDeSucesso, mensagemDeErro } from '../../components/toastr';
 import AuthService from '../../app/service/auth-service';
+import CurrencyInput from 'react-currency-input'
 
 class CadastroLancamento extends React.Component {
 
@@ -25,15 +26,21 @@ class CadastroLancamento extends React.Component {
         mes: '',
         ano: '',
         tipo: null,
-        status: null,
+        status: 'PENDENTE',
         usuario: null,
         update: false
     }
 
     handleChange = (e) => {
-        const value = e.target.value;
+        let value = e.target.value;
         const name = e.target.name;
         
+        if(name === 'valor') {
+            value = value.replace('.', '');
+            value = value.replace('$', '');
+            console.log(value);
+        }
+
         this.setState({
             [name]: value
         });
@@ -166,13 +173,17 @@ class CadastroLancamento extends React.Component {
                 <div className="row">
                     <div className="col-md-4">
                         <FormGroup htmlFor="valor" label="Valor.:">
-                            <input 
-                                type="text" 
-                                className="form-control" 
-                                id="valor" 
+                            <CurrencyInput
+                                id="valor"
                                 name="valor"
+                                inputType="text"
+                                className="form-control"
                                 value={this.state.valor}
-                                onChange={this.handleChange} />
+                                onChangeEvent={this.handleChange}
+                                decimalSeparator=","
+                                thousandSeparator="." 
+                                prefix="$"
+                                precision="2"/>
                         </FormGroup>    
                     </div>
 

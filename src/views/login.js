@@ -34,7 +34,7 @@ class Login extends React.Component {
     render() {
         return ( 
             <div className="row">
-                <div className="col-md-6" style={ {postion: 'relative', left: '300px'} }>
+                <div className="col-lg-6 col-md-6 col-sm-6" style={ {postion: 'relative', left: '300px'} }>
                     <div className="bs-docs-section">
                         <Card title="Login">
                             <div className="row">

@@ -92,6 +92,11 @@ class ConsultaLancamento extends React.Component {
     efetivar = (lancamento) => {
         const status = 'EFETIVADO';
 
+        if(lancamento.status === status) {
+            mensagemDeAlerta('Não é possível efetivar um lançamento já efetivado.');
+            return false;
+        }
+
         if(lancamento.status === 'CANCELADO') {
             mensagemDeAlerta('Lançamento cancelado não pode ser efetivado.');
             return false;
@@ -117,6 +122,11 @@ class ConsultaLancamento extends React.Component {
 
     cancelar = (lancamento) => {
         const status = 'CANCELADO';
+
+        if(lancamento.status === status) {
+            mensagemDeAlerta('Não é possível cancelar um lançamento já cancelado.');
+            return false;
+        }
 
         if(lancamento.status === 'EFETIVADO') {
             mensagemDeAlerta('Lançamento efetivado não pode ser cancelado.');

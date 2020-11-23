@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
-    baseURL: 'https://minhasfinancas-application-api.herokuapp.com/'
+    // baseURL: 'https://minhasfinancas-application-api.herokuapp.com/'
+    baseURL: 'http://localhost:8081/'
 });
 
 class ApiService {
