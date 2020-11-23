@@ -38,7 +38,6 @@ class CadastroLancamento extends React.Component {
         if(name === 'valor') {
             value = value.replace('.', '');
             value = value.replace('$', '');
-            console.log(value);
         }
 
         this.setState({
